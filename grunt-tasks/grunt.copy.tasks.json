@@ -1,0 +1,10 @@
+{
+  "source" : {
+    "expand" : true,
+    "cwd" : "src",
+    "src" : [
+      "**"
+    ],
+    "dest" : "dev"
+  }
+}

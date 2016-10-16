@@ -1,0 +1,10 @@
+.shaded-menu-bar {
+  position: absolute;
+  left: 10%;
+
+  height: 4em;
+  width: 80%;
+  border: solid red .5px;
+
+  background-color: lightblue;
+}

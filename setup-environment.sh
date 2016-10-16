@@ -1,10 +1,10 @@
 #!/bin/bash
 
 echo ""
-echo "Installing / updating grunt-cli and bower for Development."
+echo "Installing / updating pm2, grunt-cli and bower for Development."
 echo ""
 
-npm install -g grunt-cli bower
+npm install -g pm2 grunt-cli bower
 
 echo ""
 echo "You're half way there... ;)"
