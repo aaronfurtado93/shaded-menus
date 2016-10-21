@@ -28,6 +28,7 @@ var shadedMenus;
             var _0li = document.createElement("li");
             _0li.innerText = "" + jsonData.menuList[i].title;
             if (jsonData.menuList[i].title) {
+              _0li.classList.add("shaded-menu-bar-root");
               parentUl.appendChild(_0li);
             }
           }
