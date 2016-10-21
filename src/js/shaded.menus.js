@@ -1,48 +1,39 @@
-var shadedMenus = {};
+var shadedMenus;
 
 (function () {
   "use strict";
 
   shadedMenus = {
-    hello: function () {
-      alert("hello");
-    },
-    initialize: function (menuJson) {
+    initialize: function (jsonData) {
 
-      if (!menuJson) {
-        menuJson = {
-          "menuData": [
-            {
-              "title": "Menu 1",
-              "menuData": [
-                {
-                  "title": "Menu 1-1",
-                  "menuData": []
-                },
-                {
-                  "title": "Menu 1-2",
-                  "menuData": []
-                },
-                {
-                  "title": "Menu 1-3",
-                  "menuData": []
-                }
-              ]
-            }
-          ]
-        }
+      try {
+        jsonData = JSON.parse(jsonData)
+      } catch (e) {
+        console.error("Enter valid JSON data");
+        return;
+      } finally {
+
       }
 
-      window.addEventListener('ready', function () {
-        var shadedMenuBar = document.getElementsByClassName('shaded-menu-bar');
+      var rootUl = document.getElementsByClassName("shaded-menu-bar");
 
-        for (var i = 0; i < shadedMenuBar.length; i++) {
-          console.log(shadedMenuBar[i]);
-        }
-      });
+      rootUl[0].innerHTML = "";
 
+      this.parseLevel(rootUl[0], jsonData, 0)
     },
-  };
-}());
+    parseLevel: function (parentUl, jsonData, level) {
+      if (level <= 0) {
+        if (jsonData.menuList && jsonData.menuList.length > 0) {
+          for (var i = 0; i < jsonData.menuList.length; i++) {
+            var _0li = document.createElement("li");
+            _0li.innerText = "" + jsonData.menuList[i].title;
+            if (jsonData.menuList[i].title) {
+              parentUl.appendChild(_0li);
+            }
+          }
+        }
+      }
+    },
+  }
 
-shadedMenus.initialize();
+}());

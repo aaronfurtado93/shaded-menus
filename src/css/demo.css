@@ -1,0 +1,9 @@
+#jsondata {
+  position: absolute;
+  left: 10vw !important;
+  right: 10vw !important;
+  width: 80vw !important;
+  height: 80vh !important;
+  bottom: 10vh !important;
+  resize: none;
+}
