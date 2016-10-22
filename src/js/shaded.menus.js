@@ -22,15 +22,34 @@ var shadedMenus;
       this.parseLevel(rootUl[0], jsonData, 0)
     },
     parseLevel: function (parentUl, jsonData, level) {
-      if (level <= 0) {
-        if (jsonData.menuList && jsonData.menuList.length > 0) {
-          for (var i = 0; i < jsonData.menuList.length; i++) {
-            var _0li = document.createElement("li");
-            _0li.innerText = "" + jsonData.menuList[i].title;
-            if (jsonData.menuList[i].title) {
-              _0li.classList.add("shaded-menu-bar-root");
-              parentUl.appendChild(_0li);
+      // Check if list is present
+      if (jsonData.menuList && jsonData.menuList.length > 0) {
+        // iterate over the list
+        for (var i = 0; i < jsonData.menuList.length; i++) {
+
+          // check if menu title is present
+          if (jsonData.menuList[i].title) {
+            // create list item to append
+            var li = document.createElement("li");
+
+            // Add menu title to list item
+            li.innerText = jsonData.menuList[i].title;
+
+            // Check level and perform additional actions.
+            if (level <= 0) {
+              li.classList.add("shaded-menu-bar-root");
             }
+
+            li.addEventListener("click", function (event) {
+              console.log("You clicked");
+            })
+
+            if (typeof jsonData.menuList[i].clickCallBack === "function") {
+              li.addEventListener("click", jsonData.menuList[i].clickCallBack)
+            }
+
+            // Add list item to parent
+            parentUl.appendChild(li);
           }
         }
       }

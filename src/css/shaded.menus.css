@@ -3,4 +3,16 @@
   margin-left: 5px;
   margin-right: 5px;
   border: 1px solid red;
+  cursor: pointer;
+
+}
+
+.shaded-menu-container {
+  display: inline-block;
+  border: 1px solid blue;
+}
+
+.shaded-menu-container-active {
+  display: inline-block;
+  border: 1px solid red;
 }
